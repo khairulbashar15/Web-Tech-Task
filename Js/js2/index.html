@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Banner</title>
+
+    <style>
+        body{
+            text-align:center;
+            font-family:Arial;
+            background-color:lightgray;
+        }
+
+        img{
+            width:700px;
+            height:400px;
+            margin-top:20px;
+            border:3px solid black;
+        }
+
+        button{
+            padding:10px 20px;
+            margin:15px;
+            font-size:18px;
+            cursor:pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Travel Agency Banner</h1>
+
+<img id="image" src="https://picsum.photos/id/1015/700/400">
+
+<br>
+
+<button onclick="previous()">Previous</button>
+<button onclick="next()">Next</button>
+
+<script>
+
+var images = [
+    "https://picsum.photos/id/1015/700/400",
+    "https://picsum.photos/id/1016/700/400",
+    "https://picsum.photos/id/1018/700/400",
+    "https://picsum.photos/id/1020/700/400",
+    "https://picsum.photos/id/1024/700/400"
+];
+
+var i = 0;
+
+function next(){
+
+    i++;
+
+    if(i == images.length){
+        i = 0;
+    }
+
+    document.getElementById("image").src = images[i];
+
+}
+
+function previous(){
+
+    i--;
+
+    if(i < 0){
+        i = images.length - 1;
+    }
+
+    document.getElementById("image").src = images[i];
+
+}
+
+setInterval(next,3000);
+
+</script>
+
+</body>
+</html>
