@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Management System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 700px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Management System</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+
+    <input type="text" id="roll" placeholder="Enter Roll">
+
+    <input type="text" id="department" placeholder="Enter Department">
+
+    <button onclick="addStudent()">Add Student</button>
+
+    <table id="studentTable">
+
+        <tr>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Department</th>
+            <th>Action</th>
+        </tr>
+
+    </table>
+
+    <script>
+
+        function addStudent() {
+
+            var name = document.getElementById("name").value;
+            var roll = document.getElementById("roll").value;
+            var department = document.getElementById("department").value;
+
+            if (name == "" || roll == "" || department == "") {
+                alert("Please fill all fields");
+                return;
+            }
+
+            var table = document.getElementById("studentTable");
+
+            var row = document.createElement("tr");
+
+            var td1 = document.createElement("td");
+            td1.innerText = name;
+
+            var td2 = document.createElement("td");
+            td2.innerText = roll;
+
+            var td3 = document.createElement("td");
+            td3.innerText = department;
+
+            var td4 = document.createElement("td");
+
+            var deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+
+            deleteButton.onclick = function () {
+                row.remove();
+            };
+
+            td4.appendChild(deleteButton);
+
+            row.appendChild(td1);
+            row.appendChild(td2);
+            row.appendChild(td3);
+            row.appendChild(td4);
+
+            table.appendChild(row);
+
+            document.getElementById("name").value = "";
+            document.getElementById("roll").value = "";
+            document.getElementById("department").value = "";
+        }
+
+    </script>
+
+</body>
+
+</html>
